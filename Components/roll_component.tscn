@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cocpx3k842ho5"]
+
+[ext_resource type="Script" uid="uid://caa25g4eg38vn" path="res://Components/roll_component.gd" id="1_xbfd8"]
+
+[node name="RollComponent" type="Node"]
+script = ExtResource("1_xbfd8")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://b33xvruurljfy"]
+
+[ext_resource type="Script" uid="uid://dx4kgoja2njg1" path="res://Entities/Player/Player.gd" id="1_e5kic"]
+[ext_resource type="PackedScene" uid="uid://cfgg6cn0mghk1" path="res://Components/Gravity_component.tscn" id="2_ww0jn"]
+[ext_resource type="PackedScene" uid="uid://muq2mku5erai" path="res://Components/Input_component.tscn" id="3_vweq0"]
+[ext_resource type="PackedScene" uid="uid://c1ooa664aygt0" path="res://Components/Movement_component.tscn" id="4_1des2"]
+[ext_resource type="PackedScene" uid="uid://0idnp1kfqfck" path="res://Components/hide_component.tscn" id="5_an6q6"]
+[ext_resource type="PackedScene" uid="uid://cocpx3k842ho5" path="res://Components/roll_component.tscn" id="6_t38ms"]
+[ext_resource type="PackedScene" uid="uid://ccyfdqs3c8o1w" path="res://Components/Stamina_component.tscn" id="7_hj1c0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5kic"]
+radius = 29.0
+height = 100.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "hide_component", "roll_component", "stamina_component") groups=["player"]]
+collision_mask = 8
+script = ExtResource("1_e5kic")
+gravity_component = NodePath("GravityComponent")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+hide_component = NodePath("HideComponent")
+roll_component = NodePath("RollComponent")
+stamina_component = NodePath("StaminaComponent")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(7, 4)
+scale = Vector2(0.646737, 1)
+polygon = PackedVector2Array(-51.0254, -31, 40.2018, -31, 40.2018, 43, 9.27734, 43, 9.27734, 20, -30.9245, 20, -30.9245, 43, -60.3027, 43, -60.3027, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.21702, 1.03358)
+shape = SubResource("CapsuleShape2D_e5kic")
+
+[node name="GravityComponent" parent="." instance=ExtResource("2_ww0jn")]
+
+[node name="InputComponent" parent="." instance=ExtResource("3_vweq0")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("4_1des2")]
+speed = 300.0
+
+[node name="HideComponent" parent="." instance=ExtResource("5_an6q6")]
+
+[node name="RollComponent" parent="." node_paths=PackedStringArray("movement_component", "input_component") instance=ExtResource("6_t38ms")]
+movement_component = NodePath("../MovementComponent")
+input_component = NodePath("../InputComponent")
+
+[node name="StaminaComponent" parent="." instance=ExtResource("7_hj1c0")]
+position = Vector2(-71, -94)

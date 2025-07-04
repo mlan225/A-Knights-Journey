@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccyfdqs3c8o1w"]
+
+[ext_resource type="Script" uid="uid://3uuf4w50b640" path="res://Components/Stamina_component.gd" id="1_068ja"]
+
+[node name="StaminaComponent" type="Node2D" node_paths=PackedStringArray("stamina_bar", "cooldown_timer")]
+script = ExtResource("1_068ja")
+stamina_bar = NodePath("ProgressBar")
+cooldown_timer = NodePath("CooldownTimer")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 156.0
+offset_bottom = 27.0
+value = 25.0
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

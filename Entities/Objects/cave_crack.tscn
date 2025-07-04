@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddmrbdbcey0yu"]
+
+[ext_resource type="Script" uid="uid://bgtugh0we5vse" path="res://Entities/Objects/cave_crack.gd" id="1_3vmcn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8sb5"]
+size = Vector2(25.389, 72.3203)
+
+[node name="CaveCrack" type="Node2D"]
+script = ExtResource("1_3vmcn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+scale = Vector2(1.29977, 1.29977)
+shape = SubResource("RectangleShape2D_s8sb5")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-9, -26)
+polygon = PackedVector2Array(-1, -1, -1, 52, 20, 52, 19, 0)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

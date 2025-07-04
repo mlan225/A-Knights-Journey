@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0idnp1kfqfck"]
+
+[ext_resource type="Script" uid="uid://c2dtgs7nsledk" path="res://Components/hide_component.gd" id="1_d1vwb"]
+
+[node name="HideComponent" type="Node"]
+script = ExtResource("1_d1vwb")

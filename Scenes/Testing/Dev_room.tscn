@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca05wgmfv4qsk"]
+
+[ext_resource type="PackedScene" uid="uid://ddmrbdbcey0yu" path="res://Entities/Objects/cave_crack.tscn" id="2_5jtth"]
+[ext_resource type="PackedScene" uid="uid://b33xvruurljfy" path="res://Entities/Player/Player.tscn" id="2_pda8o"]
+[ext_resource type="PackedScene" uid="uid://bevtv3k8h8etb" path="res://Entities/Camera/camera.tscn" id="3_5jtth"]
+
+[sub_resource type="GDScript" id="GDScript_pda8o"]
+script/source = "extends Node2D
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6b8n"]
+size = Vector2(318.919, 10)
+
+[node name="Level" type="Node2D"]
+script = SubResource("GDScript_pda8o")
+
+[node name="Obstical" type="StaticBody2D" parent="."]
+position = Vector2(564, 588)
+scale = Vector2(2.96, 1)
+collision_layer = 8
+collision_mask = 3
+
+[node name="Polygon2D" type="Polygon2D" parent="Obstical"]
+position = Vector2(0, 1)
+scale = Vector2(4.03395, 1.29603)
+offset = Vector2(-46, -5)
+polygon = PackedVector2Array(7, 1, 86, 1, 86, 9, 7, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstical"]
+position = Vector2(2.02702, 1)
+shape = SubResource("RectangleShape2D_y6b8n")
+
+[node name="Player" parent="." instance=ExtResource("2_pda8o")]
+position = Vector2(507, 217)
+
+[node name="CaveCrack" parent="." instance=ExtResource("2_5jtth")]
+position = Vector2(787, 512)
+
+[node name="Camera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_5jtth")]
+position = Vector2(20, 9)
+target = NodePath("../Player")
