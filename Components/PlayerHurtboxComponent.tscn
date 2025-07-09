@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://367skn6ulxiy"]
+
+[ext_resource type="Script" uid="uid://n2bsa616jyqw" path="res://Components/player_hurtbox_component.gd" id="1_dsw8i"]
+
+[node name="PlayerHurtboxComponent" type="Node2D"]
+script = ExtResource("1_dsw8i")
+
+[node name="hurtboxVisual" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-2, -1, 69, -1, 69, 88, -2, 88)

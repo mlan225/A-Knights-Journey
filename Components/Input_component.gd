@@ -18,3 +18,6 @@ func get_hide_input() -> bool:
 	
 func get_roll_input() -> bool:
 	return Input.is_action_just_pressed("roll") and can_input
+	
+func get_attack_input() -> bool:
+	return Input.is_action_just_pressed("attack") and can_input

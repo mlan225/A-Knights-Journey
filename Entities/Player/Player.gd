@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var hide_component: HideComponent
 @export var roll_component: RollComponent
 @export var stamina_component: StaminaComponent
+@export var player_attack_component: PlayerAttackComponent
 
 func _physics_process(delta: float) -> void:
 	gravity_component.handle_gravity(self, delta)
@@ -24,7 +25,13 @@ func _physics_process(delta: float) -> void:
 	## allow rolling when player has stamina
 	if input_component.get_roll_input():
 		if(stamina_component.stamina_bar.value > 0):
+			## Roll component needs to handle stamina use
 			stamina_component.UseStamina(20)
 			roll_component.handle_roll()
+	
+	## player attack
+	if input_component.get_attack_input():
+		player_attack_component.Handle_attack()
+		
 	
 	move_and_slide()

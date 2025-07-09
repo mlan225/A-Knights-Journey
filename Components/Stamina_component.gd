@@ -1,6 +1,7 @@
 class_name StaminaComponent
 extends Node2D
 
+@export_subgroup("Nodes")
 ## I think I can replace this export with a $ selection
 @export var stamina_bar : ProgressBar
 @export var cooldown_timer : Timer

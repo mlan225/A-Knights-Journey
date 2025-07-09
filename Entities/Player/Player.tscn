@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b33xvruurljfy"]
+[gd_scene load_steps=10 format=3 uid="uid://b33xvruurljfy"]
 
 [ext_resource type="Script" uid="uid://dx4kgoja2njg1" path="res://Entities/Player/Player.gd" id="1_e5kic"]
 [ext_resource type="PackedScene" uid="uid://cfgg6cn0mghk1" path="res://Components/Gravity_component.tscn" id="2_ww0jn"]
@@ -7,12 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://0idnp1kfqfck" path="res://Components/hide_component.tscn" id="5_an6q6"]
 [ext_resource type="PackedScene" uid="uid://cocpx3k842ho5" path="res://Components/roll_component.tscn" id="6_t38ms"]
 [ext_resource type="PackedScene" uid="uid://ccyfdqs3c8o1w" path="res://Components/Stamina_component.tscn" id="7_hj1c0"]
+[ext_resource type="PackedScene" uid="uid://b588ep7oxtses" path="res://Components/PlayerAttackComponent.tscn" id="8_x44r4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5kic"]
 radius = 29.0
 height = 100.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "hide_component", "roll_component", "stamina_component") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "hide_component", "roll_component", "stamina_component", "player_attack_component") groups=["player"]]
 collision_mask = 8
 script = ExtResource("1_e5kic")
 gravity_component = NodePath("GravityComponent")
@@ -21,6 +22,7 @@ movement_component = NodePath("MovementComponent")
 hide_component = NodePath("HideComponent")
 roll_component = NodePath("RollComponent")
 stamina_component = NodePath("StaminaComponent")
+player_attack_component = NodePath("PlayerAttackComponent")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(7, 4)
@@ -46,3 +48,9 @@ input_component = NodePath("../InputComponent")
 
 [node name="StaminaComponent" parent="." instance=ExtResource("7_hj1c0")]
 position = Vector2(-71, -94)
+
+[node name="PlayerAttackComponent" parent="." node_paths=PackedStringArray("stamina_component") instance=ExtResource("8_x44r4")]
+position = Vector2(51, -39)
+stamina_component = NodePath("../StaminaComponent")
+attack_length = 0.4
+attack_stamina_cost = 30

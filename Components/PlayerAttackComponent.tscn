@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b588ep7oxtses"]
+
+[ext_resource type="Script" uid="uid://dgu8t6bl2agr6" path="res://Components/player_attack_component.gd" id="1_ud0qa"]
+[ext_resource type="PackedScene" uid="uid://367skn6ulxiy" path="res://Components/PlayerHurtboxComponent.tscn" id="2_jnmoi"]
+
+[node name="PlayerAttackComponent" type="Node2D" node_paths=PackedStringArray("player_hurtbox_component")]
+script = ExtResource("1_ud0qa")
+player_hurtbox_component = NodePath("PlayerHurtboxComponent")
+
+[node name="PlayerHurtboxComponent" parent="." instance=ExtResource("2_jnmoi")]
